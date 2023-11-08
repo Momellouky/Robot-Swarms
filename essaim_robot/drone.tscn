@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://badsxrshljvhn"]
+
+[ext_resource type="Script" path="res://essaim_robot/drone.gd" id="1_8xf8p"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ee3uu"]
+albedo_color = Color(0.431373, 0.431373, 0.431373, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rvq0m"]
+material = SubResource("StandardMaterial3D_ee3uu")
+size = Vector3(1, 0.5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jo6sb"]
+size = Vector3(2, 1.5, 2)
+
+[sub_resource type="TorusMesh" id="TorusMesh_6li08"]
+inner_radius = 0.238
+outer_radius = 0.384
+
+[node name="Drone" type="RigidBody3D"]
+axis_lock_linear_y = true
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+gravity_scale = 0.0
+script = ExtResource("1_8xf8p")
+metadata/battery = 100
+metadata/water = 100.0
+metadata/pesticide = 100.0
+metadata/fertilizer = 100.0
+metadata/baseXpos = 0.0
+metadata/baseYpos = 0.0
+metadata/baseZpos = 0.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_rvq0m")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_jo6sb")
+
+[node name="wingrightfront" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 0.25, 0.7)
+mesh = SubResource("TorusMesh_6li08")
+
+[node name="wingLeftFront" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.25, 0.7)
+mesh = SubResource("TorusMesh_6li08")
+
+[node name="wingRightBack" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 0.25, -0.7)
+mesh = SubResource("TorusMesh_6li08")
+
+[node name="WingLeftBack" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.360608, 0.253922, -0.624269)
+mesh = SubResource("TorusMesh_6li08")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

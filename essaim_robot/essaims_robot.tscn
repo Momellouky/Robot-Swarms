@@ -1,0 +1,75 @@
+[gd_scene load_steps=12 format=3 uid="uid://jxr1f004y28s"]
+
+[ext_resource type="PackedScene" uid="uid://ds78l7tjtcjr4" path="res://essaim_robot/tree_.tscn" id="1_dmysw"]
+[ext_resource type="Script" path="res://addons/BehavForGroups/Behavior.gd" id="2_l84kq"]
+[ext_resource type="Script" path="res://addons/BehavForGroups/BehavForGroups.gd" id="2_nahwg"]
+[ext_resource type="Script" path="res://addons/BehavForGroups/IfDataIsEqual.gd" id="3_1tp5q"]
+[ext_resource type="Script" path="res://addons/BehavForGroups/AddAgent.gd" id="4_1fm6w"]
+[ext_resource type="Script" path="res://addons/BehavForGroups/Sequential.gd" id="4_nh133"]
+[ext_resource type="Script" path="res://addons/BehavForGroups/IfProba.gd" id="6_c7sbi"]
+[ext_resource type="Script" path="res://addons/BehavForGroups/ForceRandom.gd" id="6_pypqx"]
+[ext_resource type="Script" path="res://addons/BehavForGroups/ForceForward.gd" id="9_dtm40"]
+[ext_resource type="PackedScene" uid="uid://bs1111erc5uhk" path="res://essaim_robot/base.tscn" id="11_f546c"]
+[ext_resource type="PackedScene" uid="uid://badsxrshljvhn" path="res://essaim_robot/drone.tscn" id="11_yq3kj"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Tree" parent="." instance=ExtResource("1_dmysw")]
+
+[node name="Drone" parent="." groups=["drone"] instance=ExtResource("11_yq3kj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.42514, 1.15024, 0)
+contact_monitor = true
+metadata/baseZpos = 66.0
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.917782, 0.397084, 0, -0.397084, 0.917782, -1, 2.84991, 11.4261)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0410212, 0.999158, 0, -0.999158, 0.0410212, 0, 7.53491, 5.19921)
+
+[node name="BehavForGroups" type="Node" parent="."]
+script = ExtResource("2_nahwg")
+
+[node name="tree" type="Node" parent="BehavForGroups"]
+script = ExtResource("2_l84kq")
+on_group = "tree"
+
+[node name="Sequential" type="Node" parent="BehavForGroups/tree"]
+script = ExtResource("4_nh133")
+
+[node name="IfDataIsEqual" type="Node" parent="BehavForGroups/tree/Sequential"]
+script = ExtResource("3_1tp5q")
+data_name = "infected"
+is_equal_to = 1.0
+
+[node name="IfProba" type="Node" parent="BehavForGroups/tree/Sequential"]
+script = ExtResource("6_c7sbi")
+proba = 1.0
+
+[node name="AddAgent" type="Node" parent="BehavForGroups/tree/Sequential"]
+script = ExtResource("4_1fm6w")
+agent_tscn = "res://essaim_robot/insect.tscn"
+
+[node name="Insect" type="Node" parent="BehavForGroups"]
+script = ExtResource("2_l84kq")
+on_group = "insect"
+
+[node name="Sequential" type="Node" parent="BehavForGroups/Insect"]
+script = ExtResource("4_nh133")
+
+[node name="ForceRandom" type="Node" parent="BehavForGroups/Insect/Sequential"]
+script = ExtResource("6_pypqx")
+
+[node name="Drone" type="Node" parent="BehavForGroups"]
+script = ExtResource("2_l84kq")
+on_group = "drone"
+
+[node name="watering" type="Node" parent="BehavForGroups/Drone"]
+script = ExtResource("4_nh133")
+
+[node name="ForceForward" type="Node" parent="BehavForGroups/Drone/watering"]
+script = ExtResource("9_dtm40")
+fx = 2.0
+
+[node name="base" parent="." instance=ExtResource("11_f546c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 66)

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://rewo4ge3myvs"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qq1o2"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_keaco"]
+material = SubResource("StandardMaterial3D_qq1o2")
+size = Vector3(0.08, 0.08, 0.08)
+
+[node name="insect" type="RigidBody3D" groups=["insect"]]
+gravity_scale = 0.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_keaco")

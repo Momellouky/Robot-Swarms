@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://dg37rsfu7h13q"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ntpgg"]
+albedo_color = Color(0.701961, 0.101961, 0.231373, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_qdi26"]
+material = SubResource("StandardMaterial3D_ntpgg")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_28st8"]
+albedo_color = Color(0.688648, 0.297932, 0.211064, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sn1t0"]
+material = SubResource("StandardMaterial3D_28st8")
+
+[node name="tree" type="RigidBody3D" groups=["arbre_en_feu"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.18486, 1.41141, -0.0618958)
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+gravity_scale = 0.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.130966, 0.94712, -0.036444)
+mesh = SubResource("SphereMesh_qdi26")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_sn1t0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
