@@ -1,59 +1,25 @@
+Robot Swarms for Precision Agriculture
+------------------------------------------
 
-Trackball Camera for Godot
---------------------------
+# Overview
 
-[![MIT](https://img.shields.io/github/license/Goutte/godot-trackball-camera.svg?style=for-the-badge)](https://github.com/Goutte/godot-trackball-camera)
-[![Release](https://img.shields.io/github/release/Goutte/godot-trackball-camera.svg?style=for-the-badge)](https://github.com/Goutte/godot-trackball-camera/releases)
-[![FeedStarvingDev](https://img.shields.io/liberapay/patrons/Goutte.svg?style=for-the-badge&logo=liberapay)](https://liberapay.com/Goutte/)
+This project focuses on developing a simulation of robot swarms, specifically drones, for precision agriculture. The primary objective is to create a system where these drones work together to efficiently and autonomously water, fertilize, and manage infected plants by administering pesticide. This approach offers several benefits, including increased crop yields, reduced resource wastage, and improved plant health.
 
-A [Godot](https://godotengine.org/) `4.x` addon that adds a `TrackballCamera` node without gimbal lock.
+# Introduction
+Agriculture is a vital industry, and the efficient use of resources is essential for its sustainability. Robot swarms provide a promising solution to optimize various farming tasks. In this project, we focus on simulating drone swarms that can work together to manage crops effectively.
 
-The `TrackballCamera` responds to input from mouse, keyboard, joystick and touch, in order to rotate around its parent node while facing it.
+# Features
++ Distributed Coordination: Drones communicate and coordinate their actions to maximize efficiency and minimize overlap.
++ Plant Health Monitoring: Drones use sensors and image recognition to identify plant health issues.
++ Precision Actions: Drones can administer precise amounts of water, fertilizer, and pesticide to individual plants.
++ Scalability: The simulation can scale to accommodate larger or smaller fields.
 
-A version for Godot `3.x` [is available as well](https://github.com/Goutte/godot-trackball-camera/releases/tag/v6.0).
-A version for Godot `2.x` [is available as well](https://github.com/Goutte/godot-trackball-camera/releases/tag/v1.0).
+# Contributing
+We welcome contributions from the open-source community. Feel free to submit bug reports, feature requests, or even pull requests to improve this project. 
 
-
-Features
---------
-
-- stays around its parent node, even if the latter moves
-- no gimbal lock (quaternions 🌟)
-- camera inertia for a smoother experience (can be disabled)
-- horizon can be stable or free
-- the parent node does not have to be centered in the camera's view
-- analog camera control with joystick, courtesy of [@marcello505](https://github.com/marcello505) (in [#4](https://github.com/Goutte/godot-trackball-camera/pull/4))
-- a bunch of parameters to configure everything as you want it
-- one-click creation of camera actions (_jams!_)
+# License
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/Momellouky/Robot-Swarms/blob/main/LICENSE) file for details.
 
 
-Install
--------
 
-The installation is as usual, through the [Assets Library](https://godotengine.org/asset-library/asset?user=Goutte).
-You can also simply copy the files of this project into yours, it should work.
-
-Then, enable the plugin in `Scene > Project Settings > Plugins`.
-
-
-Usage
------
-
-Make the `TrackballCamera` a child of the `Node3D` to trackball around.
-Make sure your camera initially faces said node, and is at a proper distance from it.
-The initial position of your camera matters. The node does not need to be in the center of the camera's view.
-
-You can also use this camera to look around you if you place it atop its parent node, spatially.
-It's going to rotate around itself, and that amounts to looking around.
-You'll probably want to set `mouse_invert` and `keyboard_invert` to true in that case.
-
-
-Todo
-----
-
-- [ ] Test if touch works on android and html5, try `SCREEN_DRAG` otherwise. (see [#6](https://github.com/Goutte/godot-trackball-camera/issues/6))
-
-
-Feedback and contributions are welcome!
-
-
+For any questions or feedback, please contact us at contact.mellouky@gmail.com.
