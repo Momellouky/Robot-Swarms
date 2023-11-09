@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwwctihbpjja3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8efjd"]
+albedo_color = Color(0.270588, 0.12549, 0.0117647, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2koo6"]
+material = SubResource("StandardMaterial3D_8efjd")
+size = Vector3(40, 1, 40)
+
+[node name="terrain" type="RigidBody3D"]
+gravity_scale = 0.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_2koo6")

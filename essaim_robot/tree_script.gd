@@ -26,7 +26,10 @@ func ColorChange() :
 		mat.albedo_color = Color(1,1,153 / 255)
 	elif need_fertilizer :
 		var mat:StandardMaterial3D = get_material()
-		mat.albedo_color = Color(139 / 255,69 / 255 ,19 / 255)  # 139,69,19
+		mat.albedo_color = Color(139 / 255,69 / 255 ,9 / 255)  # 139,69,19
+	else : 
+		var mat:StandardMaterial3D = get_material()
+		mat.albedo_color = Color("009036") 
 		
 func get_material() :
 	var mat:StandardMaterial3D = StandardMaterial3D.new()
@@ -38,7 +41,7 @@ func get_material() :
 	return mat
 
 
-func _on_body_entered(drone):
+func _on_area_3d_body_entered(drone):
 	var needs_water:int = get_meta("withered")
 	var need_fertilizer:int = get_meta("need_fertilizer")
 	var infected:int = get_meta("infected")
@@ -47,16 +50,18 @@ func _on_body_entered(drone):
 	var fertilizer_level:float = drone.get_meta("fertilizer")
 	var pesticide_level:float = drone.get_meta("pesticide")
 	
-	print("nneds_water: ", needs_water)
-	print("need_fertilizer: ", need_fertilizer)
-	print("infected: ", infected)
+#	print("needs_water: ", needs_water)
+#	print("need_fertilizer: ", need_fertilizer)
+#	print("infected: ", infected)
 	
 	if needs_water == 1 and water_level > 5: 
-		drone.set_meta("water", water_level - 5.0)
+		print("Watering")
+#		drone.set_meta("water", water_level - 5.0)
 		set_meta("withered", 0)
 		
 	if need_fertilizer == 1 and fertilizer_level > 10.0: 
-		drone.set_meta("fertilizer", fertilizer_level - 10.0)
+		print("Fertilizing")
+#		drone.set_meta("fertilizer", fertilizer_level - 10.0)
 		set_meta("need_fertilizer", 0)
 		
 	if infected == 1 and pesticide_level > 7.0: 
