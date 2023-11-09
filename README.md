@@ -3,6 +3,8 @@ Robot Swarms for Precision Agriculture
 
 # Overview
 
+![Screenshot from the project showing robots working together to water, fertilize and manage infacted plants](./essaim_robot/img/Screenshot.png)
+
 This project focuses on developing a simulation of robot swarms, specifically drones, for precision agriculture. The primary objective is to create a system where these drones work together to efficiently and autonomously water, fertilize, and manage infected plants by administering pesticide. This approach offers several benefits, including increased crop yields, reduced resource wastage, and improved plant health.
 
 # Introduction
