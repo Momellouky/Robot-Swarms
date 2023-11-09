@@ -50,17 +50,11 @@ func _on_area_3d_body_entered(drone):
 	var fertilizer_level:float = drone.get_meta("fertilizer")
 	var pesticide_level:float = drone.get_meta("pesticide")
 	
-#	print("needs_water: ", needs_water)
-#	print("need_fertilizer: ", need_fertilizer)
-#	print("infected: ", infected)
-	
 	if needs_water == 1 and water_level > 5: 
-		print("Watering")
 #		drone.set_meta("water", water_level - 5.0)
 		set_meta("withered", 0)
 		
 	if need_fertilizer == 1 and fertilizer_level > 10.0: 
-		print("Fertilizing")
 #		drone.set_meta("fertilizer", fertilizer_level - 10.0)
 		set_meta("need_fertilizer", 0)
 		
