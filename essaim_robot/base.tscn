@@ -5,10 +5,10 @@ albedo_color = Color(0, 0.564706, 0.211765, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_mw5fd"]
 material = SubResource("StandardMaterial3D_1mwgn")
-size = Vector3(10, 10, 10)
+size = Vector3(2, 2, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3gu5d"]
-size = Vector3(10, 10, 10)
+size = Vector3(10, 10, 5)
 
 [node name="base" type="RigidBody3D"]
 
@@ -16,4 +16,5 @@ size = Vector3(10, 10, 10)
 mesh = SubResource("BoxMesh_mw5fd")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.20837, 0)
 shape = SubResource("BoxShape3D_3gu5d")
